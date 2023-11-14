@@ -9,7 +9,7 @@ char *argument = NULL;
  * @line_number: The line number
  * @our_stack: A pointer to a stack
 */
-void split_line(char *line, unsigned int line_number, stack_t *our_stack)
+void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 {
 	char *string;
 	instruction_t instructions[] = {
@@ -29,7 +29,7 @@ void split_line(char *line, unsigned int line_number, stack_t *our_stack)
 			{
 				if (strcmp(string, instructions[i].opcode) == 0)
 				{
-					instructions[i].f(&our_stack, line_number);
+					instructions[i].f(our_stack, line_number);
 					break;
 				}
 			}
