@@ -49,7 +49,7 @@ extern char *argument;
 /*Process lines*/
 void split_line(char *line, unsigned int line_number, stack_t *our_stack);
 bool check_blank(char *line);
-bool check_opcode(char *string, instruction_t instructions[],
+bool check_opcode(char *string, instruction_t *instructions,
 size_t num_instructions);
 
 /*Operations*/
