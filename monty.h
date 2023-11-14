@@ -64,4 +64,5 @@ void pop_top_element(stack_t **our_stack, unsigned int line_number);
 void swap_top_elements(stack_t **our_stack, unsigned int line_number);
 void add_top_elements(stack_t **our_stack, unsigned int line_number);
 void sub_top_elements(stack_t **our_stack, unsigned int line_number);
+void mul_top_elements(stack_t **our_stack, unsigned int line_number);
 #endif

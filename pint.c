@@ -10,7 +10,7 @@ void print_top_element(stack_t **our_stack, unsigned int line_number)
 {
 	if ((*our_stack) == NULL)
 	{
-		fprintf(stderr, "%d: can't pint, stack empty", line_number);
+		fprintf(stderr, "L%d: can't pint, stack empty", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*our_stack)->n);

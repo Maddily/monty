@@ -14,7 +14,7 @@ void sub_top_elements(stack_t **our_stack, unsigned int line_number)
 
 	if (get_stack_length(our_stack) < 2)
 	{
-		fprintf(stderr, "%d: can't sub, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 

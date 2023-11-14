@@ -1,20 +1,20 @@
 #include "monty.h"
 
 /**
- * add_top_elements - adds the top two elements of the stack
- * @our_stack: double pointer to the stack
+ * mul_top_elements - subtracts top element of stack from second top element
+ * @our_stack: the stack
  * @line_number: line being read
  */
 
-void add_top_elements(stack_t **our_stack, unsigned int line_number)
+void mul_top_elements(stack_t **our_stack, unsigned int line_number)
 {
-	int sum, top_n, second_n;
+	int product, top_n, second_n;
 	stack_t *top_element;
 	stack_t *second_element;
 
 	if (get_stack_length(our_stack) < 2)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -23,9 +23,9 @@ void add_top_elements(stack_t **our_stack, unsigned int line_number)
 
 	top_n = top_element->n;
 	second_n = second_element->n;
-	sum = top_n + second_n;
+	product = top_n * second_n;
 
-	second_element->n = sum;
+	second_element->n = product;
 	second_element->prev = NULL;
 
 	free(top_element);
