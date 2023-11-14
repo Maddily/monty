@@ -15,7 +15,6 @@ void _pint_func(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);	
-	/*find head of the linked list*/
 	/*use stack data structure*/
 	/*does not add or remove elements*/
 	/*so no need to change prev or next values*/
