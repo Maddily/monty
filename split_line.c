@@ -15,7 +15,11 @@ void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 	instruction_t instructions[] = {
 		{"push", push_to_stack},
 		{"pall", print_all_stack},
-		{"nop", implement_nop}
+		{"pint", print_top_element},
+		{"pop", pop_top_element},
+		{"swap", swap_top_elements},
+		{"add", add_top_elements},
+    {"nop", implement_nop}
 	};
 	size_t i, num_instructions;
 
