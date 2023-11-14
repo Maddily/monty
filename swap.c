@@ -5,7 +5,7 @@
  * @stack: double pointer to the stack
  * @line_number: line being read
  */
- 
+
 void _swap_func(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top_element;
@@ -15,7 +15,7 @@ void _swap_func(stack_t **stack, unsigned int line_number)
 	if (get_stack_length(*stack) < 2)
 	{
 		fprintf(stderr, "%d: can't swap, stack too short\n", line_number);
-		exit(EXIT_FAILUR):
+		exit(EXIT_FAILURE);
 	}
 
 	/*if errors occur check swap logic below*/
@@ -47,7 +47,7 @@ void _swap_func(stack_t **stack, unsigned int line_number)
 int get_stack_length(stack_t **stack)
 {
 	int counter = 0;
-	stack_t *temp = *stack; 
+	stack_t *temp = *stack;
 
 	while (temp != NULL)
 	{
