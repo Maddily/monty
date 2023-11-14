@@ -14,7 +14,8 @@ void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 	char *string;
 	instruction_t instructions[] = {
 		{"push", push_to_stack},
-		{"pall", print_all_stack}
+		{"pall", print_all_stack},
+		{"nop", implement_nop}
 	};
 	size_t i, num_instructions;
 
@@ -63,4 +64,15 @@ size_t num_instructions)
 	}
 
 	return (false);
+}
+/**
+ * implement_nop - Implements the nop opcode
+ *
+ * @our_stack: A pointer to a stack
+ * @line_number: The number of a line in a file
+*/
+void implement_nop(stack_t **our_stack, unsigned int line_number)
+{
+	UNUSED(our_stack);
+	UNUSED(line_number);
 }
