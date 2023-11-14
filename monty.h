@@ -22,9 +22,9 @@
 
 typedef struct stack_s
 {
-	int n;
-	struct stack_s *prev;
-	struct stack_s *next;
+		int n;
+			struct stack_s *prev;
+				struct stack_s *next;
 } stack_t;
 
 /**
@@ -38,8 +38,8 @@ typedef struct stack_s
 
 typedef struct instruction_s
 {
-	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+		char *opcode;
+			void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 #define UNUSED(x) (void)(x)
@@ -50,7 +50,7 @@ extern char *argument;
 void split_line(char *line, unsigned int line_number, stack_t **our_stack);
 bool check_blank(char *line);
 bool check_opcode(char *string, instruction_t *instructions,
-size_t num_instructions);
+		size_t num_instructions);
 
 /*helper functions*/
 int get_stack_length(stack_t **our_stack);
@@ -64,5 +64,6 @@ void print_top_element(stack_t **our_stack, unsigned int line_number);
 void pop_top_element(stack_t **our_stack, unsigned int line_number);
 void swap_top_elements(stack_t **our_stack, unsigned int line_number);
 void add_top_elements(stack_t **our_stack, unsigned int line_number);
-
+void sub_top_elements(stack_t **our_stack, unsigned int line_number);
+void mul_top_elements(stack_t **our_stack, unsigned int line_number);
 #endif
