@@ -28,6 +28,7 @@ void _pop_func(stack_t **stack, unsigned int line_number)
 
 	/*no need to update prev value of element before top*/
 	(*stack) = element->prev;
+	/*handle edge case where there is one element in the stack*/
 	if ((*stack) != NULL)
 		element->prev->next = NULL;
 	free(element);
