@@ -55,5 +55,6 @@ size_t num_instructions);
 /*Operations*/
 void push_to_stack(stack_t **our_stack, unsigned int line_number);
 void print_all_stack(stack_t **our_stack, unsigned int line_number);
+void implement_nop(stack_t **our_stack, unsigned int line_number);
 
 #endif
