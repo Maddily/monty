@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 	{
 		if (check_blank(line))
 			continue;
-		split_line(line, line_number, our_stack);
+		split_line(line, line_number, &our_stack);
 		line_number++;
 	}
 	fclose(file);
