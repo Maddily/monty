@@ -19,7 +19,7 @@ void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 		{"pop", pop_top_element},
 		{"swap", swap_top_elements},
 		{"add", add_top_elements},
-    {"nop", implement_nop}
+		{"nop", implement_nop}
 	};
 	size_t i, num_instructions;
 
@@ -38,6 +38,8 @@ void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 					break;
 				}
 			}
+			if (strcmp(string, instructions[i].opcode) == 0)
+				break;
 		}
 		else
 		{
