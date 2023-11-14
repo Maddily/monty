@@ -1,5 +1,7 @@
 #include "monty.h"
 
+char *argument = NULL;
+
 /**
  * split_line - Splits a line using delimiters
  *
