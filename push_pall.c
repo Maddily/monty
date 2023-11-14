@@ -12,16 +12,16 @@ void push_to_stack(stack_t **our_stack, unsigned int line_number)
 	int arg;
 
 	/*Check if the argument is valid*/
-	if (strcmp("0", argument) == 0 || atoi(argument))
+	if (strcmp("0", argument) == 0 || validate_argument())
 	{
 		if (strcmp("0", argument) == 0)
 			arg = 0;
-		else if (atoi(argument))
+		else if (validate_argument())
 			arg = atoi(argument);
 	}
-	else if (atoi(argument) == 0)
+	else
 	{
-		fprintf(stderr, "L%d: usage: push integer", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	/*Create a new node and push it*/
@@ -67,4 +67,23 @@ void print_all_stack(stack_t **our_stack, unsigned int line_number)
 			current = current->next;
 		}
 	}
+}
+/**
+ * validate_argument - Checks if the argument is a valid numeral string
+ *
+ * Return: true if valid, false otherwise
+*/
+bool validate_argument(void)
+{
+	char *invalid_char;
+	long result;
+
+	UNUSED(result);
+	invalid_char = NULL;
+	result = strtol(argument, &invalid_char, 10);
+
+	if (*invalid_char != '\0')
+		return (false);
+
+	return (true);
 }
