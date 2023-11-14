@@ -29,7 +29,6 @@ void push_to_stack(stack_t **our_stack, unsigned int line_number)
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		/*Should send a sign to the main function to exit itself with EXIT_FAILURE?*/
 		exit(EXIT_FAILURE);
 	}
 	new_node->n = arg;
