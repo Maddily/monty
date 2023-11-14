@@ -54,6 +54,7 @@ bool check_opcode(char *string, instruction_t *instructions,
 
 /*helper functions*/
 int get_stack_length(stack_t **our_stack);
+bool validate_argument(void);
 
 /*Operations*/
 void push_to_stack(stack_t **our_stack, unsigned int line_number);
