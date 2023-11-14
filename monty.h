@@ -52,8 +52,15 @@ bool check_blank(char *line);
 bool check_opcode(char *string, instruction_t *instructions,
 size_t num_instructions);
 
+/*helper functions*/
+int get_stack_length(stack_t **our_stack);
+
 /*Operations*/
 void push_to_stack(stack_t **our_stack, unsigned int line_number);
 void print_all_stack(stack_t **our_stack, unsigned int line_number);
+void print_top_element(stack_t **our_stack, unsigned int line_number);
+void pop_top_element(stack_t **our_stack, unsigned int line_number);
+void swap_top_elements(stack_t **our_stack, unsigned int line_number);
+void add_top_elements(stack_t **our_stack, unsigned int line_number);
 
 #endif
