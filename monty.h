@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
@@ -41,4 +42,24 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+#define UNUSED(x) (void)(x)
+
+extern char *argument;
+
+/*Process lines*/
+void split_line(char *line, unsigned int line_number, stack_t **our_stack);
+bool check_blank(char *line);
+bool check_opcode(char *string, instruction_t *instructions,
+size_t num_instructions);
+
+/*helper functions*/
+int get_stack_length(stack_t **our_stack);
+
+/*Operations*/
+void push_to_stack(stack_t **our_stack, unsigned int line_number);
+void print_all_stack(stack_t **our_stack, unsigned int line_number);
+void print_top_element(stack_t **our_stack, unsigned int line_number);
+void pop_top_element(stack_t **our_stack, unsigned int line_number);
+void swap_top_elements(stack_t **our_stack, unsigned int line_number);
+void add_top_elements(stack_t **our_stack, unsigned int line_number);
 #endif

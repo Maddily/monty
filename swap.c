@@ -1,27 +1,27 @@
 #include "monty.h"
 
 /**
- * _swap_func - swaps the top two elements of the stack.
- * @stack: double pointer to the stack
+ * swap_top_elements - swaps the top two elements of the stack.
+ * @our_stack: double pointer to the stack
  * @line_number: line being read
  */
 
-void _swap_func(stack_t **stack, unsigned int line_number)
+void swap_top_elements(stack_t **our_stack, unsigned int line_number)
 {
 	stack_t *top_element;
 	stack_t *second_element;
 	stack_t *third_element;
 
-	if (get_stack_length(*stack) < 2)
+	if (get_stack_length(our_stack) < 2)
 	{
 		fprintf(stderr, "%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
 	/*if errors occur check swap logic below*/
-	top_element = (*stack);
-	second_element = (*stack)->next;
-	third_element = (*stack)->next->next;
+	top_element = (*our_stack);
+	second_element = (*our_stack)->next;
+	third_element = (*our_stack)->next->next;
 	/*also consider third elements pointers*/
 	if (third_element != NULL)
 		third_element->prev = top_element; /*point to top_element*/
@@ -35,19 +35,19 @@ void _swap_func(stack_t **stack, unsigned int line_number)
 	/*swap second element to top*/
 
 	/*update *stack*/
-	*stack = second_element;
+	*our_stack = second_element;
 }
 
 /**
  * get_stack_length - calculates how many elements are in the stack
- * @stack: the stack
+ * @our_stack: the stack
  * Return: number of elements in the stack
  */
 
-int get_stack_length(stack_t **stack)
+int get_stack_length(stack_t **our_stack)
 {
 	int counter = 0;
-	stack_t *temp = *stack;
+	stack_t *temp = *our_stack;
 
 	while (temp != NULL)
 	{
