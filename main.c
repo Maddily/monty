@@ -1,13 +1,20 @@
 #include "monty.h"
 
-int main(int argc , char *argv[])
+/**
+ * main - A monty bytecode interpreter
+ *
+ * @argc: Argument count
+ * @argv: Arguments passed to the program
+ *
+ * Return: 0
+*/
+int main(int argc, char *argv[])
 {
 	FILE *file;
-	size_t length = 0;
-	char *line = NULL;
+	char line[500];
 	char *filename = argv[1];
-	ssize_t read;
-	int line_number = 1;
+	unsigned int line_number = 1;
+	stack_t *our_stack = NULL;
 
 	if (argc < 2) /*to do: add a check for recieving more than 2 arguments*/
 		/*suggested: if (argc != 2)*/
@@ -21,23 +28,33 @@ int main(int argc , char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-	while ((read = getline(&line, &length, file)) != -1)
+	while (fgets(line, sizeof(line), file) != NULL)
 	{
-		/*process file*/
+		if (check_blank(line))
+			continue;
+		split_line(line, line_number, our_stack);
 		line_number++;
 	}
-	free(line);
 	fclose(file);
 	return (0);
 }
-
-int process_file(int line_number, char *filename)
+/**
+ * check_blank - Checks if a line is a blank line
+ *
+ * @line: A pointer to a string
+ *
+ * Return: true if the line is blank or consists of whitespace only,
+ * false if the line isn't blank
+*/
+bool check_blank(char *line)
 {
-	/*search for opcode*/
-		/*create an array with opcode and function*/
-	/*implement opcode function*/
-		/* in seperate files to reduce line count*/
-		/* If the file contains an invalid instruction, print the error message L<line_number>: unknown instruction <opcode>, followed by a new line, and exit with the status EXIT_FAILURE*/
-	/*return to main, free memory and close file*/
+	size_t i;
 
+	for (i = 0; i < strlen(line); i++)
+	{
+		if (!isspace((unsigned char)line[i]))
+			return (false);
+	}
+
+	return (true);
 }
