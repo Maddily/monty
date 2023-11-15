@@ -50,6 +50,7 @@ typedef struct instruction_s
  * @is_stack: A flag indicating whether this is a stack or not
  * @is_queue: A flag indicating whether this is a queue or not
 */
+
 typedef struct globals_s
 {
 	char *argument;
