@@ -9,14 +9,18 @@
 void stack_func(stack_t **our_stack, unsigned int line_number)
 {
 	stack_t *temp = NULL;
+	stack_t *current = *our_stack;
+	stack_t *next;
 	(void)line_number;
 
 	if (globals.mode != STACK_MODE)
 	{
-		while ((*our_stack) != NULL)
+		while (current != NULL)
 		{
-			push_to_stack(&temp, (*our_stack)->n);
-			(*our_stack) = (*our_stack)->next;
+			next = current->next;
+			current->next = temp;
+			temp = current;
+			current = next;
 		}
 	}
 	*our_stack = temp;

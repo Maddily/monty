@@ -1,2 +1,2 @@
-push 1a
+push a
 pall

@@ -11,21 +11,15 @@ void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 {
 	char *string;
 	instruction_t instructions[] = {
-		{"push", push_to_stack},
-		{"pall", print_all_stack},
-		{"pint", print_top_element},
-		{"pop", pop_top_element},
-		{"swap", swap_top_elements},
-		{"add", add_top_elements},
-		{"sub", sub_top_elements},
-		{"mul", mul_top_elements},
-		{"div", div_top_elements},
-		{"mod", mod_top_elements},
-		{"nop", implement_nop},
-		{"pchar", implement_pchar},
-		{"pstr", implement_pstr},
-		{"stack", switch_stack_queue_mode},
-		{"queue", switch_stack_queue_mode}
+		{"push", push_to_stack}, {"pall", print_all_stack},
+		{"pint", print_top_element}, {"pop", pop_top_element},
+		{"swap", swap_top_elements}, {"add", add_top_elements},
+		{"sub", sub_top_elements}, {"mul", mul_top_elements},
+		{"div", div_top_elements}, {"mod", mod_top_elements},
+		{"nop", implement_nop}, {"pchar", implement_pchar},
+		{"pstr", implement_pstr}, {"rotl", implement_rotl},
+		{"rotr", implement_rotr},
+		{"stack", switch_stack_queue_mode}, {"queue", switch_stack_queue_mode}
 	};
 	size_t i, num_instructions;
 
@@ -46,6 +40,8 @@ void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 	else
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, string);
+		free_our_stack(*our_stack);
+		fclose(globals.file);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -90,19 +86,23 @@ void implement_nop(stack_t **our_stack, unsigned int line_number)
 */
 void implement_pchar(stack_t **our_stack, unsigned int line_number)
 {
-	if (*our_stack == NULL)
+	if (our_stack == NULL || *our_stack == NULL)
 	{
 		printf("L%d: can't pchar, stack empty\n", line_number);
+		fclose(globals.file);
 		exit(EXIT_FAILURE);
 	}
 
-	if ((*our_stack)->n < 33 || (*our_stack)->n > 126)
+	if ((*our_stack)->n < 0 || (*our_stack)->n > 127)
 	{
 		printf("L%d: can't pchar, value out of range\n", line_number);
+		free_our_stack(*our_stack);
+		fclose(globals.file);
 		exit(EXIT_FAILURE);
 	}
 
-	printf("%c\n", (*our_stack)->n);
+	putchar((*our_stack)->n);
+	putchar('\n');
 }
 /**
  * implement_pstr - Implements the pstr opcode

@@ -15,6 +15,8 @@ void div_top_elements(stack_t **our_stack, unsigned int line_number)
 	if (get_stack_length(our_stack) < 2)
 	{
 		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+		free_our_stack(*our_stack);
+		fclose(globals.file);
 		exit(EXIT_FAILURE);
 	}
 
@@ -27,6 +29,8 @@ void div_top_elements(stack_t **our_stack, unsigned int line_number)
 	if (top_n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
+		free_our_stack(*our_stack);
+		fclose(globals.file);
 		exit(EXIT_FAILURE);
 	}
 	quotient = second_n / top_n;

@@ -23,6 +23,8 @@ void push_to_stack(stack_t **our_stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_our_stack(*our_stack);
+		fclose(globals.file);
 		exit(EXIT_FAILURE);
 	}
 	/*Create a new node and push it*/
@@ -30,15 +32,15 @@ void push_to_stack(stack_t **our_stack, unsigned int line_number)
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free_our_stack(*our_stack);
+		fclose(globals.file);
 		exit(EXIT_FAILURE);
 	}
 	new_node->n = arg;
 	new_node->prev = NULL;
 	/*Empty stack*/
 	if (*our_stack == NULL)
-	{
 		new_node->next = NULL;
-	}
 	else
 	{
 		new_node->next = *our_stack;
@@ -66,6 +68,73 @@ void print_all_stack(stack_t **our_stack, unsigned int line_number)
 		{
 			printf("%d\n", current->n);
 			current = current->next;
+		}
+	}
+}
+/**
+ * implement_rotl - Rotates the stack to the top
+ *
+ * @our_stack: A pointer to a stack
+ * @line_number: The number of a line in a file
+*/
+void implement_rotl(stack_t **our_stack, unsigned int line_number)
+{
+	stack_t *last, *top;
+	size_t i = 0;
+
+	UNUSED(line_number);
+
+	if (*our_stack != NULL)
+	{
+		last = *our_stack;
+
+		while (last->next != NULL)
+		{
+			last = last->next;
+			i++;
+		}
+		/*If there's more than one node in the stack*/
+		if (i > 0)
+		{
+			top = *our_stack;
+			*our_stack = (*our_stack)->next;
+			(*our_stack)->prev = NULL;
+			top->next = NULL;
+			last->next = top;
+			top->prev = last;
+		}
+	}
+}
+/**
+ * implement_rotr - Rotates the stack to the bottom
+ *
+ * @our_stack: A pointer to a stack
+ * @line_number: The number of a line in a file
+*/
+void implement_rotr(stack_t **our_stack, unsigned int line_number)
+{
+	stack_t *last;
+	size_t i = 0;
+
+	UNUSED(line_number);
+
+	if (*our_stack != NULL)
+	{
+		last = *our_stack;
+
+		while (last->next != NULL)
+		{
+			last = last->next;
+			i++;
+		}
+		/*If there's more than one node in the stack*/
+		if (i > 0)
+		{
+			last->prev->next = NULL;
+			last->prev = NULL;
+			last->next = *our_stack;
+			(*our_stack)->prev = last;
+			*our_stack = last;
 		}
 	}
 }
