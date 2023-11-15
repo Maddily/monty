@@ -12,7 +12,8 @@ void push_to_stack(stack_t **our_stack, unsigned int line_number)
 	int arg;
 
 	/*Check if the argument is valid*/
-	if (strcmp("0", globals.argument) == 0 || validate_argument())
+	if (globals.argument != NULL
+	&& (strcmp("0", globals.argument) == 0 || validate_argument()))
 	{
 		if (strcmp("0", globals.argument) == 0)
 			arg = 0;
