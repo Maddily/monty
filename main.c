@@ -12,7 +12,6 @@ globals_t globals = {NULL, NULL};
 */
 int main(int argc, char *argv[])
 {
-	FILE *file;
 	char line[500];
 	char *filename = argv[1];
 	unsigned int line_number = 1;
@@ -23,13 +22,13 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	file = fopen(filename, "r");
-	if (file == NULL)
+	globals.file = fopen(filename, "r");
+	if (globals.file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-	while (fgets(line, sizeof(line), file) != NULL)
+	while (fgets(line, sizeof(line), globals.file) != NULL)
 	{
 		if (check_blank(line))
 			continue;
@@ -37,7 +36,7 @@ int main(int argc, char *argv[])
 		line_number++;
 	}
 	free_our_stack(our_stack);
-	fclose(file);
+	fclose(globals.file);
 	return (0);
 }
 /**
