@@ -27,28 +27,22 @@ void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 
 	num_instructions = sizeof(instructions) / sizeof(instructions[0]);
 	string = strtok(line, DELIMITER);
-	while (string != NULL)
+	if (check_opcode(string, instructions, num_instructions))
 	{
-		if (check_opcode(string, instructions, num_instructions))
+		globals.argument = strtok(NULL, DELIMITER);
+		for (i = 0; i < num_instructions; i++)
 		{
-			globals.argument = strtok(NULL, DELIMITER);
-			for (i = 0; i < num_instructions; i++)
-			{
-				if (strcmp(string, instructions[i].opcode) == 0)
-				{
-					instructions[i].f(our_stack, line_number);
-					break;
-				}
-			}
 			if (strcmp(string, instructions[i].opcode) == 0)
+			{
+				instructions[i].f(our_stack, line_number);
 				break;
+			}
 		}
-		else
-		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, string);
-			exit(EXIT_FAILURE);
-		}
-		string = strtok(NULL, DELIMITER);
+	}
+	else
+	{
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, string);
+		exit(EXIT_FAILURE);
 	}
 }
 /**
