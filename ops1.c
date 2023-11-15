@@ -72,6 +72,73 @@ void print_all_stack(stack_t **our_stack, unsigned int line_number)
 	}
 }
 /**
+ * implement_rotl - Rotates the stack to the top
+ *
+ * @our_stack: A pointer to a stack
+ * @line_number: The number of a line in a file
+*/
+void implement_rotl(stack_t **our_stack, unsigned int line_number)
+{
+	stack_t *last, *top;
+	size_t i = 0;
+
+	UNUSED(line_number);
+
+	if (*our_stack != NULL)
+	{
+		last = *our_stack;
+
+		while (last->next != NULL)
+		{
+			last = last->next;
+			i++;
+		}
+		/*If there's more than one node in the stack*/
+		if (i > 0)
+		{
+			top = *our_stack;
+			*our_stack = (*our_stack)->next;
+			(*our_stack)->prev = NULL;
+			top->next = NULL;
+			last->next = top;
+			top->prev = last;
+		}
+	}
+}
+/**
+ * implement_rotr - Rotates the stack to the bottom
+ *
+ * @our_stack: A pointer to a stack
+ * @line_number: The number of a line in a file
+*/
+void implement_rotr(stack_t **our_stack, unsigned int line_number)
+{
+	stack_t *last;
+	size_t i = 0;
+
+	UNUSED(line_number);
+
+	if (*our_stack != NULL)
+	{
+		last = *our_stack;
+
+		while (last->next != NULL)
+		{
+			last = last->next;
+			i++;
+		}
+		/*If there's more than one node in the stack*/
+		if (i > 0)
+		{
+			last->prev->next = NULL;
+			last->prev = NULL;
+			last->next = *our_stack;
+			(*our_stack)->prev = last;
+			*our_stack = last;
+		}
+	}
+}
+/**
  * validate_argument - Checks if the argument is a valid numeral string
  *
  * Return: true if valid, false otherwise

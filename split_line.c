@@ -11,19 +11,14 @@ void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 {
 	char *string;
 	instruction_t instructions[] = {
-		{"push", push_to_stack},
-		{"pall", print_all_stack},
-		{"pint", print_top_element},
-		{"pop", pop_top_element},
-		{"swap", swap_top_elements},
-		{"add", add_top_elements},
-		{"sub", sub_top_elements},
-		{"mul", mul_top_elements},
-		{"div", div_top_elements},
-		{"mod", mod_top_elements},
-		{"nop", implement_nop},
-		{"pchar", implement_pchar},
-		{"pstr", implement_pstr}
+		{"push", push_to_stack}, {"pall", print_all_stack},
+		{"pint", print_top_element}, {"pop", pop_top_element},
+		{"swap", swap_top_elements}, {"add", add_top_elements},
+		{"sub", sub_top_elements}, {"mul", mul_top_elements},
+		{"div", div_top_elements}, {"mod", mod_top_elements},
+		{"nop", implement_nop}, {"pchar", implement_pchar},
+		{"pstr", implement_pstr}, {"rotl", implement_rotl},
+		{"rotr", implement_rotr}
 	};
 	size_t i, num_instructions;
 

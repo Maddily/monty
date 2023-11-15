@@ -84,6 +84,8 @@ void div_top_elements(stack_t **our_stack, unsigned int line_number);
 void mod_top_elements(stack_t **our_stack, unsigned int line_number);
 void implement_pchar(stack_t **our_stack, unsigned int line_number);
 void implement_pstr(stack_t **our_stack, unsigned int line_number);
+void implement_rotl(stack_t **our_stack, unsigned int line_number);
+void implement_rotr(stack_t **our_stack, unsigned int line_number);
 void stack_func(stack_t **our_stack, unsigned int line_number);
 void queue_func(stack_t **our_stack, unsigned int line_number);
 #endif
