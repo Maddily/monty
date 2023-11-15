@@ -11,6 +11,8 @@ void print_top_element(stack_t **our_stack, unsigned int line_number)
 	if ((*our_stack) == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty", line_number);
+		free_our_stack(*our_stack);
+		fclose(globals.file);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*our_stack)->n);
