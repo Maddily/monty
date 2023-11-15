@@ -28,12 +28,12 @@ void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 	size_t i, num_instructions;
 
 	num_instructions = sizeof(instructions) / sizeof(instructions[0]);
-	string = strtok(line, " \t\n");
+	string = strtok(line, DELIMITER);
 	while (string != NULL)
 	{
 		if (check_opcode(string, instructions, num_instructions))
 		{
-			argument = strtok(NULL, " \t\n");
+			argument = strtok(NULL, DELIMITER);
 			for (i = 0; i < num_instructions; i++)
 			{
 				if (strcmp(string, instructions[i].opcode) == 0)
@@ -48,9 +48,10 @@ void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 		else
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, string);
+			free_our_stack(our_stack);
 			exit(EXIT_FAILURE);
 		}
-		string = strtok(NULL, " \t\n");
+		string = strtok(NULL, DELIMITER);
 	}
 }
 /**
@@ -103,6 +104,7 @@ void implement_pchar(stack_t **our_stack, unsigned int line_number)
 	if ((*our_stack)->n < 33 || (*our_stack)->n > 126)
 	{
 		printf("L%d: can't pchar, value out of range\n", line_number);
+		free_our_stack(our_stack);
 		exit(EXIT_FAILURE);
 	}
 
