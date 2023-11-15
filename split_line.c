@@ -23,7 +23,9 @@ void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 		{"mod", mod_top_elements},
 		{"nop", implement_nop},
 		{"pchar", implement_pchar},
-		{"pstr", implement_pstr}
+		{"pstr", implement_pstr},
+		{"stack", switch_stack_queue_mode},
+		{"queue", switch_stack_queue_mode}
 	};
 	size_t i, num_instructions;
 

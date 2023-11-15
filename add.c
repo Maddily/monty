@@ -25,9 +25,17 @@ void add_top_elements(stack_t **our_stack, unsigned int line_number)
 	second_n = second_element->n;
 	sum = top_n + second_n;
 
-	second_element->n = sum;
-	second_element->prev = NULL;
-
-	free(top_element);
-	(*our_stack) = second_element;
+	if (globals.mode == STACK_MODE)
+	{
+		second_element->n = sum;
+		second_element->prev = NULL;
+		free(top_element);
+		(*our_stack) = second_element;
+	}
+	else if (globals.mode == QUEUE_MODE)
+	{
+		enqueue(our_stack, our_stack, sum);
+		free(top_element);
+		free(second_element);
+	}
 }
