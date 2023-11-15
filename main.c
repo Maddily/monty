@@ -10,6 +10,7 @@ globals_t globals = {NULL, NULL, true, false};
  *
  * Return: 0
 */
+
 int main(int argc, char *argv[])
 {
 	char line[500];
@@ -39,6 +40,7 @@ int main(int argc, char *argv[])
 	fclose(globals.file);
 	return (0);
 }
+
 /**
  * check_blank - Checks if a line is a blank line
  *
@@ -47,6 +49,7 @@ int main(int argc, char *argv[])
  * Return: true if the line is blank or consists of whitespace only,
  * false if the line isn't blank
 */
+
 bool check_blank(char *line)
 {
 	size_t i;
@@ -64,11 +67,13 @@ bool check_blank(char *line)
 
 	return (true);
 }
+
 /**
  * free_our_stack - Frees the stack
  *
  * @our_stack: A pointer to the pointer pointing to the stack
 */
+
 void free_our_stack(stack_t *our_stack)
 {
 	stack_t *current;
@@ -83,12 +88,14 @@ void free_our_stack(stack_t *our_stack)
 		}
 	}
 }
+
 /**
  * implement_queue - Changes the data structure to a queue
  *
  * @our_stack: A pointer to a stack
  * @line_number: The number of a line in a file
 */
+
 void implement_queue(stack_t **our_stack, unsigned int line_number)
 {
 	UNUSED(our_stack);
@@ -97,12 +104,14 @@ void implement_queue(stack_t **our_stack, unsigned int line_number)
 	globals.is_queue = true;
 	globals.is_stack = false;
 }
+
 /**
  * implement_stack - Changes the data structure to a stack
  *
  * @our_stack: A pointer to a stack
  * @line_number: The number of a line in a file
 */
+
 void implement_stack(stack_t **our_stack, unsigned int line_number)
 {
 	UNUSED(our_stack);
