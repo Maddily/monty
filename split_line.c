@@ -21,7 +21,9 @@ void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 		{"add", add_top_elements},
 		{"sub", sub_top_elements},
 		{"mul", mul_top_elements},
-		{"nop", implement_nop}
+		{"nop", implement_nop},
+		{"pchar", implement_pchar},
+		{"pstr", implement_pstr}
 	};
 	size_t i, num_instructions;
 
@@ -83,4 +85,56 @@ void implement_nop(stack_t **our_stack, unsigned int line_number)
 {
 	UNUSED(our_stack);
 	UNUSED(line_number);
+}
+/**
+ * implement_pchar - Implements the pchar opcode
+ *
+ * @our_stack: A pointer to a stack
+ * @line_number: The number of a line in a file
+*/
+void implement_pchar(stack_t **our_stack, unsigned int line_number)
+{
+	if (*our_stack == NULL)
+	{
+		printf("L%d: can't pchar, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	if ((*our_stack)->n < 33 || (*our_stack)->n > 126)
+	{
+		printf("L%d: can't pchar, value out of range\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	printf("%c\n", (*our_stack)->n);
+}
+/**
+ * implement_pstr - Implements the pstr opcode
+ *
+ * @our_stack: A pointer to a stack
+ * @line_number: The number of a line in a file
+*/
+void implement_pstr(stack_t **our_stack, unsigned int line_number)
+{
+	stack_t *current;
+
+	UNUSED(line_number);
+
+	if (*our_stack == NULL)
+		printf("\n");
+	else
+	{
+		current = *our_stack;
+
+		while (current != NULL)
+		{
+			if (current->n == 0 || current->n < 0 || current->n > 127)
+			{
+				break;
+			}
+			printf("%c", current->n);
+			current = current->next;
+		}
+		printf("\n");
+	}
 }
