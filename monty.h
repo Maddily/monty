@@ -52,6 +52,7 @@ typedef struct globals_s
 {
 	char *argument;
 	FILE *file;
+	enum { STACK_MODE, QUEUE_MODE } mode;
 } globals_t;
 
 #define UNUSED(x) (void)(x)
@@ -69,6 +70,8 @@ bool check_opcode(char *string, instruction_t *instructions,
 int get_stack_length(stack_t **our_stack);
 bool validate_argument(void);
 void free_our_stack(stack_t *our_stack);
+void enqueue(stack_t **front, stack_t **rear, int data);
+void switch_stack_queue_mode(stack_t **our_stack, unsigned int line_number);
 
 /*Operations*/
 void push_to_stack(stack_t **our_stack, unsigned int line_number);

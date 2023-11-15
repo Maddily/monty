@@ -1,6 +1,6 @@
 #include "monty.h"
 
-globals_t globals = {NULL, NULL};
+globals_t globals = {NULL, NULL, STACK_MODE};
 
 /**
  * main - A monty bytecode interpreter
