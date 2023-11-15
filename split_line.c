@@ -88,14 +88,14 @@ void implement_pchar(stack_t **our_stack, unsigned int line_number)
 {
 	if (our_stack == NULL || *our_stack == NULL)
 	{
-		printf("L%d: can't pchar, stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 		fclose(globals.file);
 		exit(EXIT_FAILURE);
 	}
 
 	if ((*our_stack)->n < 0 || (*our_stack)->n > 127)
 	{
-		printf("L%d: can't pchar, value out of range\n", line_number);
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		free_our_stack(*our_stack);
 		fclose(globals.file);
 		exit(EXIT_FAILURE);
