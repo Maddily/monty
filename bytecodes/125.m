@@ -1,2 +1,2 @@
-push 72
-pstr
+push 0
+pchar
