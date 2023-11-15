@@ -43,7 +43,7 @@ typedef struct instruction_s
 } instruction_t;
 
 #define UNUSED(x) (void)(x)
-#define DELIMITER " \t\n\r\a\b"
+#define DELIMITER " \t\n"
 
 extern char *argument;
 
