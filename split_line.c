@@ -18,7 +18,8 @@ void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 		{"div", div_top_elements}, {"mod", mod_top_elements},
 		{"nop", implement_nop}, {"pchar", implement_pchar},
 		{"pstr", implement_pstr}, {"rotl", implement_rotl},
-		{"rotr", implement_rotr}
+		{"rotr", implement_rotr}, {"queue", implement_queue},
+		{"stack", implement_stack}
 	};
 	size_t i, num_instructions;
 
