@@ -67,6 +67,10 @@ void swap_top_elements(stack_t **our_stack, unsigned int line_number);
 void add_top_elements(stack_t **our_stack, unsigned int line_number);
 void sub_top_elements(stack_t **our_stack, unsigned int line_number);
 void mul_top_elements(stack_t **our_stack, unsigned int line_number);
+void div_top_elements(stack_t **our_stack, unsigned int line_number);
+void mod_top_elements(stack_t **our_stack, unsigned int line_number);
 void implement_pchar(stack_t **our_stack, unsigned int line_number);
 void implement_pstr(stack_t **our_stack, unsigned int line_number);
+void stack_func(stack_t **our_stack, unsigned int line_number);
+void queue_func(stack_t **our_stack, unsigned int line_number);
 #endif

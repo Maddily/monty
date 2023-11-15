@@ -52,7 +52,12 @@ bool check_blank(char *line)
 	for (i = 0; i < strlen(line); i++)
 	{
 		if (!isspace((unsigned char)line[i]))
+		{
+			/*check for comments and treat it as a blank line*/
+			if (line[i] == '#')
+				return (true);
 			return (false);
+		}
 	}
 
 	return (true);
