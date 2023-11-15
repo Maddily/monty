@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 	unsigned int line_number = 1;
 	stack_t *our_stack = NULL;
 
-	if (argc < 2) /*to do: add a check for recieving more than 2 arguments*/
+	if (argc != 2) /*to do: add a check for recieving more than 2 arguments*/
 		/*suggested: if (argc != 2)*/
 	{
 		fprintf(stderr, "USAGE: monty file\n");
