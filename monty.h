@@ -22,9 +22,9 @@
 
 typedef struct stack_s
 {
-		int n;
-			struct stack_s *prev;
-				struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -38,14 +38,26 @@ typedef struct stack_s
 
 typedef struct instruction_s
 {
-		char *opcode;
-			void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+/**
+ * struct globals_s - opcode argument and file
+ *
+ * @argument: A pointer to the opcode argument
+ * @file: A pointer to a file
+*/
+typedef struct globals_s
+{
+	char *argument;
+	FILE *file;
+} globals_t;
 
 #define UNUSED(x) (void)(x)
 #define DELIMITER " \t\n"
 
-extern char *argument;
+extern globals_t globals;
 
 /*Process lines*/
 void split_line(char *line, unsigned int line_number, stack_t **our_stack);
