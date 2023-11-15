@@ -15,7 +15,6 @@ void sub_top_elements(stack_t **our_stack, unsigned int line_number)
 	if (get_stack_length(our_stack) < 2)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
-		fclose(globals.file);
 		exit(EXIT_FAILURE);
 	}
 
