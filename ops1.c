@@ -27,26 +27,25 @@ void push_to_stack(stack_t **our_stack, unsigned int line_number)
 		fclose(globals.file);
 		exit(EXIT_FAILURE);
 	}
-	/*Create a new node and push it*/
-	new_node = malloc(sizeof(stack_t));
-	if (new_node == NULL)
+	if (globals.is_stack == true)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
-		free_our_stack(*our_stack);
-		fclose(globals.file);
-		exit(EXIT_FAILURE);
+		new_node = malloc(sizeof(stack_t)); /*Create a new node and push it*/
+		if (new_node == NULL)
+		{
+			fprintf(stderr, "Error: malloc failed\n");
+			free_our_stack(*our_stack);
+			fclose(globals.file);
+			exit(EXIT_FAILURE);
+		}
+		new_node->n = arg, new_node->prev = NULL;
+		if (*our_stack == NULL) /*Empty stack*/
+			new_node->next = NULL;
+		else
+			new_node->next = *our_stack, (*our_stack)->prev = new_node;
+		*our_stack = new_node;
 	}
-	new_node->n = arg;
-	new_node->prev = NULL;
-	/*Empty stack*/
-	if (*our_stack == NULL)
-		new_node->next = NULL;
 	else
-	{
-		new_node->next = *our_stack;
-		(*our_stack)->prev = new_node;
-	}
-	*our_stack = new_node;
+		implement_enqueue(our_stack, arg);
 }
 /**
  * print_all_stack - Prints the data in a stack
