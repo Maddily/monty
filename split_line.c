@@ -90,7 +90,7 @@ void implement_nop(stack_t **our_stack, unsigned int line_number)
 */
 void implement_pchar(stack_t **our_stack, unsigned int line_number)
 {
-	if (*our_stack == NULL)
+	if (our_stack == NULL || *our_stack == NULL)
 	{
 		printf("L%d: can't pchar, stack empty\n", line_number);
 		fclose(globals.file);
@@ -105,7 +105,8 @@ void implement_pchar(stack_t **our_stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	printf("%c\n", (*our_stack)->n);
+	putchar((*our_stack)->n);
+	putchar('\n');
 }
 /**
  * implement_pstr - Implements the pstr opcode
