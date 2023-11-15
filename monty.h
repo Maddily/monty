@@ -47,11 +47,15 @@ typedef struct instruction_s
  *
  * @argument: A pointer to the opcode argument
  * @file: A pointer to a file
+ * @is_stack: A flag indicating whether this is a stack or not
+ * @is_queue: A flag indicating whether this is a queue or not
 */
 typedef struct globals_s
 {
 	char *argument;
 	FILE *file;
+	bool is_stack;
+	bool is_queue;
 } globals_t;
 
 #define UNUSED(x) (void)(x)
@@ -86,6 +90,10 @@ void implement_pchar(stack_t **our_stack, unsigned int line_number);
 void implement_pstr(stack_t **our_stack, unsigned int line_number);
 void implement_rotl(stack_t **our_stack, unsigned int line_number);
 void implement_rotr(stack_t **our_stack, unsigned int line_number);
-void stack_func(stack_t **our_stack, unsigned int line_number);
-void queue_func(stack_t **our_stack, unsigned int line_number);
+void implement_queue(stack_t **our_stack, unsigned int line_number);
+void implement_enqueue(stack_t **our_queue, int arg);
+void implement_dequeue(stack_t **our_queue);
+void implement_stack(stack_t **our_stack, unsigned int line_number);
+
+
 #endif

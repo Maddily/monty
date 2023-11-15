@@ -1,6 +1,6 @@
 #include "monty.h"
 
-globals_t globals = {NULL, NULL};
+globals_t globals = {NULL, NULL, true, false};
 
 /**
  * main - A monty bytecode interpreter
@@ -82,4 +82,32 @@ void free_our_stack(stack_t *our_stack)
 			our_stack = current;
 		}
 	}
+}
+/**
+ * implement_queue - Changes the data structure to a queue
+ *
+ * @our_stack: A pointer to a stack
+ * @line_number: The number of a line in a file
+*/
+void implement_queue(stack_t **our_stack, unsigned int line_number)
+{
+	UNUSED(our_stack);
+	UNUSED(line_number);
+
+	globals.is_queue = true;
+	globals.is_stack = false;
+}
+/**
+ * implement_stack - Changes the data structure to a stack
+ *
+ * @our_stack: A pointer to a stack
+ * @line_number: The number of a line in a file
+*/
+void implement_stack(stack_t **our_stack, unsigned int line_number)
+{
+	UNUSED(our_stack);
+	UNUSED(line_number);
+
+	globals.is_stack = true;
+	globals.is_queue = false;
 }

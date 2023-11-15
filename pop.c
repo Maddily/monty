@@ -12,9 +12,14 @@ void pop_top_element(stack_t **our_stack, unsigned int line_number)
 
 	if (*our_stack != NULL)
 	{
-		element = (*our_stack);
-		(*our_stack) = element->next;
-		free(element);
+		if (globals.is_stack == true)
+		{
+			element = (*our_stack);
+			(*our_stack) = element->next;
+			free(element);
+		}
+		else
+			implement_dequeue(our_stack);
 	}
 	else
 	{
