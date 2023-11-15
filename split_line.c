@@ -97,7 +97,7 @@ void implement_pchar(stack_t **our_stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	if ((*our_stack)->n < 33 || (*our_stack)->n > 126)
+	if ((*our_stack)->n < 0 || (*our_stack)->n > 127)
 	{
 		printf("L%d: can't pchar, value out of range\n", line_number);
 		free_our_stack(*our_stack);
