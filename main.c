@@ -1,5 +1,7 @@
 #include "monty.h"
 
+globals_t globals = {NULL, NULL};
+
 /**
  * main - A monty bytecode interpreter
  *

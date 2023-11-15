@@ -12,16 +12,17 @@ void push_to_stack(stack_t **our_stack, unsigned int line_number)
 	int arg;
 
 	/*Check if the argument is valid*/
-	if (strcmp("0", argument) == 0 || validate_argument())
+	if (strcmp("0", globals.argument) == 0 || validate_argument())
 	{
-		if (strcmp("0", argument) == 0)
+		if (strcmp("0", globals.argument) == 0)
 			arg = 0;
 		else if (validate_argument())
-			arg = atoi(argument);
+			arg = atoi(globals.argument);
 	}
 	else
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		fclose(globals.file);
 		exit(EXIT_FAILURE);
 	}
 	/*Create a new node and push it*/
@@ -29,6 +30,7 @@ void push_to_stack(stack_t **our_stack, unsigned int line_number)
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		fclose(globals.file);
 		exit(EXIT_FAILURE);
 	}
 	new_node->n = arg;
@@ -80,7 +82,7 @@ bool validate_argument(void)
 
 	UNUSED(result);
 	invalid_char = NULL;
-	result = strtol(argument, &invalid_char, 10);
+	result = strtol(globals.argument, &invalid_char, 10);
 
 	if (*invalid_char != '\0')
 		return (false);

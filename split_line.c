@@ -1,7 +1,5 @@
 #include "monty.h"
 
-char *argument = NULL;
-
 /**
  * split_line - Splits a line using delimiters
  *
@@ -33,7 +31,7 @@ void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 	{
 		if (check_opcode(string, instructions, num_instructions))
 		{
-			argument = strtok(NULL, DELIMITER);
+			globals.argument = strtok(NULL, DELIMITER);
 			for (i = 0; i < num_instructions; i++)
 			{
 				if (strcmp(string, instructions[i].opcode) == 0)
