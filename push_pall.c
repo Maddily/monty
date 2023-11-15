@@ -22,7 +22,6 @@ void push_to_stack(stack_t **our_stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		fclose(globals.file);
 		exit(EXIT_FAILURE);
 	}
 	/*Create a new node and push it*/
@@ -30,7 +29,6 @@ void push_to_stack(stack_t **our_stack, unsigned int line_number)
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		fclose(globals.file);
 		exit(EXIT_FAILURE);
 	}
 	new_node->n = arg;

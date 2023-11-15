@@ -19,7 +19,6 @@ void pop_top_element(stack_t **our_stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		fclose(globals.file);
 		exit(EXIT_FAILURE);
 	}
 }
