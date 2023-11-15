@@ -15,7 +15,6 @@ void add_top_elements(stack_t **our_stack, unsigned int line_number)
 	if (get_stack_length(our_stack) < 2)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
-		free_our_stack(our_stack);
 		exit(EXIT_FAILURE);
 	}
 

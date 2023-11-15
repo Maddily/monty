@@ -48,7 +48,6 @@ void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 		else
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, string);
-			free_our_stack(our_stack);
 			exit(EXIT_FAILURE);
 		}
 		string = strtok(NULL, DELIMITER);
@@ -104,7 +103,6 @@ void implement_pchar(stack_t **our_stack, unsigned int line_number)
 	if ((*our_stack)->n < 33 || (*our_stack)->n > 126)
 	{
 		printf("L%d: can't pchar, value out of range\n", line_number);
-		free_our_stack(our_stack);
 		exit(EXIT_FAILURE);
 	}
 
