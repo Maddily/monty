@@ -34,7 +34,6 @@ int main(int argc, char *argv[])
 		split_line(line, line_number, &our_stack);
 		line_number++;
 	}
-	free_our_stack(&our_stack);
 	fclose(file);
 	return (0);
 }
@@ -57,23 +56,4 @@ bool check_blank(char *line)
 	}
 
 	return (true);
-}
-/**
- * free_our_stack - Frees the stack
- *
- * @our_stack: A pointer to the pointer pointing to the stack
-*/
-void free_our_stack(stack_t **our_stack)
-{
-	stack_t *current;
-
-	if (*our_stack != NULL)
-	{
-		while (our_stack != NULL)
-		{
-			current = (*our_stack)->next;
-			free(*our_stack);
-			*our_stack = current;
-		}
-	}
 }
