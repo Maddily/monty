@@ -16,8 +16,7 @@ int main(int argc, char *argv[])
 	unsigned int line_number = 1;
 	stack_t *our_stack = NULL;
 
-	if (argc != 2) /*to do: add a check for recieving more than 2 arguments*/
-		/*suggested: if (argc != 2)*/
+	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
@@ -35,6 +34,7 @@ int main(int argc, char *argv[])
 		split_line(line, line_number, &our_stack);
 		line_number++;
 	}
+	free_our_stack(&our_stack);
 	fclose(file);
 	return (0);
 }
@@ -57,4 +57,23 @@ bool check_blank(char *line)
 	}
 
 	return (true);
+}
+/**
+ * free_our_stack - Frees the stack
+ *
+ * @our_stack: A pointer to the pointer pointing to the stack
+*/
+void free_our_stack(stack_t **our_stack)
+{
+	stack_t *current;
+
+	if (*our_stack != NULL)
+	{
+		while (our_stack != NULL)
+		{
+			current = (*our_stack)->next;
+			free(*our_stack);
+			*our_stack = current;
+		}
+	}
 }
