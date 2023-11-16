@@ -6,6 +6,7 @@
  * @our_stack: A pointer to a stack
  * @line_number: The number of a line in a file
 */
+
 void push_to_stack(stack_t **our_stack, unsigned int line_number)
 {
 	stack_t *new_node;
@@ -100,12 +101,14 @@ void implement_rotl(stack_t **our_stack, unsigned int line_number)
 		}
 	}
 }
+
 /**
  * implement_rotr - Rotates the stack to the bottom
  *
  * @our_stack: A pointer to a stack
  * @line_number: The number of a line in a file
 */
+
 void implement_rotr(stack_t **our_stack, unsigned int line_number)
 {
 	stack_t *last;
