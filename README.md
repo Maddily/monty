@@ -19,7 +19,7 @@ This is an interpreter for Monty ByteCodes files.
 
 ## Features
 
-1.
+1. Reads basic opcodes (push, pint, pall, pop, swap, nop)
 2.
 3.
 4.
