@@ -23,7 +23,7 @@ This is an interpreter for Monty ByteCodes files.
 2. Reads and executes math opcodes (add, sub, mul, div ,mod)
 3. Reads and executes advanced opcodes (pchar, pstr, rotl, rotr)
 4. Reads and executes stack and queue opcodes
-5.
+5. Handls comments in .m files accordingly
 6.
 7.
 8.
