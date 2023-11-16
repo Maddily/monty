@@ -14,7 +14,7 @@ globals_t globals = {NULL, NULL, true, false};
 int main(int argc, char *argv[])
 {
 	char line[500];
-	char *filename = argv[1];
+	char *filename;
 	unsigned int line_number = 1;
 	stack_t *our_stack = NULL;
 
@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+	filename = argv[1];
 	globals.file = fopen(filename, "r");
 	if (globals.file == NULL)
 	{
@@ -78,14 +79,11 @@ void free_our_stack(stack_t *our_stack)
 {
 	stack_t *current;
 
-	if (our_stack != NULL)
+	while (our_stack != NULL)
 	{
-		while (our_stack != NULL)
-		{
-			current = our_stack->next;
-			free(our_stack);
-			our_stack = current;
-		}
+		current = our_stack->next;
+		free(our_stack);
+		our_stack = current;
 	}
 }
 

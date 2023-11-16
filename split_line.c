@@ -25,6 +25,7 @@ void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 
 	num_instructions = sizeof(instructions) / sizeof(instructions[0]);
 	string = strtok(line, DELIMITER);
+	/*Check if string is a valid opcode*/
 	if (check_opcode(string, instructions, num_instructions))
 	{
 		globals.argument = strtok(NULL, DELIMITER);
