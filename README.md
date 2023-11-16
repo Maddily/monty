@@ -17,3 +17,4 @@ This is an interpreter for Monty ByteCodes files.
 	https://github.com/Maddily/monty
 2. Run ./monty <file_name>
 
+## Features
