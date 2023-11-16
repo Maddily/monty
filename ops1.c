@@ -45,7 +45,7 @@ void push_to_stack(stack_t **our_stack, unsigned int line_number)
 		*our_stack = new_node;
 	}
 	else
-		implement_enqueue(our_stack, arg);
+		implement_enqueue(our_stack, arg); /*Add the value to the queue*/
 }
 /**
  * print_all_stack - Prints the data in a stack
@@ -59,15 +59,11 @@ void print_all_stack(stack_t **our_stack, unsigned int line_number)
 
 	UNUSED(line_number);
 
-	/*Print only if not empty*/
-	if (*our_stack != NULL)
+	current = *our_stack;
+	while (current != NULL)
 	{
-		current = *our_stack;
-		while (current != NULL)
-		{
-			printf("%d\n", current->n);
-			current = current->next;
-		}
+		printf("%d\n", current->n);
+		current = current->next;
 	}
 }
 /**
