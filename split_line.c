@@ -7,6 +7,7 @@
  * @line_number: The line number
  * @our_stack: A pointer to a stack
 */
+
 void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 {
 	char *string;
@@ -46,6 +47,7 @@ void split_line(char *line, unsigned int line_number, stack_t **our_stack)
 		exit(EXIT_FAILURE);
 	}
 }
+
 /**
  * check_opcode - Checks if the received argument is a valid opcode
  *
@@ -55,6 +57,7 @@ void split_line(char *line, unsigned int line_number, stack_t **our_stack)
  *
  * Return: true if it's valid, false if not
 */
+
 bool check_opcode(char *string, instruction_t *instructions,
 size_t num_instructions)
 {
@@ -68,23 +71,27 @@ size_t num_instructions)
 
 	return (false);
 }
+
 /**
  * implement_nop - Implements the nop opcode
  *
  * @our_stack: A pointer to a stack
  * @line_number: The number of a line in a file
 */
+
 void implement_nop(stack_t **our_stack, unsigned int line_number)
 {
 	UNUSED(our_stack);
 	UNUSED(line_number);
 }
+
 /**
  * implement_pchar - Implements the pchar opcode
  *
  * @our_stack: A pointer to a stack
  * @line_number: The number of a line in a file
 */
+
 void implement_pchar(stack_t **our_stack, unsigned int line_number)
 {
 	if (our_stack == NULL || *our_stack == NULL)
@@ -105,12 +112,14 @@ void implement_pchar(stack_t **our_stack, unsigned int line_number)
 	putchar((*our_stack)->n);
 	putchar('\n');
 }
+
 /**
  * implement_pstr - Implements the pstr opcode
  *
  * @our_stack: A pointer to a stack
  * @line_number: The number of a line in a file
 */
+
 void implement_pstr(stack_t **our_stack, unsigned int line_number)
 {
 	stack_t *current;
