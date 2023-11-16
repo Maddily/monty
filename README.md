@@ -21,7 +21,7 @@ This is an interpreter for Monty ByteCodes files.
 
 1. Reads and executes basic opcodes (push, pint, pall, pop, swap, nop)
 2. Reads and executes math opcodes (add, sub, mul, div ,mod)
-3.
+3. Reads and executes advanced opcodes (pchar, pstr, rotl, rotr)
 4.
 5.
 6.
