@@ -25,7 +25,3 @@ This is an interpreter for Monty ByteCodes files.
 4. Reads and executes stack and queue opcodes
 5. Handls comments in .m files accordingly
 6. Has seperate folder for simple Brainf*ck functions.
-7.
-8.
-9.
-10.
