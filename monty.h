@@ -83,17 +83,20 @@ void print_top_element(stack_t **our_stack, unsigned int line_number);
 void pop_top_element(stack_t **our_stack, unsigned int line_number);
 void swap_top_elements(stack_t **our_stack, unsigned int line_number);
 
+/*math operations */
 void add_top_elements(stack_t **our_stack, unsigned int line_number);
 void sub_top_elements(stack_t **our_stack, unsigned int line_number);
 void mul_top_elements(stack_t **our_stack, unsigned int line_number);
 void div_top_elements(stack_t **our_stack, unsigned int line_number);
 void mod_top_elements(stack_t **our_stack, unsigned int line_number);
 
+/*advanced operations*/
 void implement_pchar(stack_t **our_stack, unsigned int line_number);
 void implement_pstr(stack_t **our_stack, unsigned int line_number);
 void implement_rotl(stack_t **our_stack, unsigned int line_number);
 void implement_rotr(stack_t **our_stack, unsigned int line_number);
 
+/*stack and queue operations*/
 void implement_queue(stack_t **our_stack, unsigned int line_number);
 void implement_enqueue(stack_t **our_queue, int arg);
 void implement_dequeue(stack_t **our_queue);
