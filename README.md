@@ -24,7 +24,7 @@ This is an interpreter for Monty ByteCodes files.
 3. Reads and executes advanced opcodes (pchar, pstr, rotl, rotr)
 4. Reads and executes stack and queue opcodes
 5. Handls comments in .m files accordingly
-6.
+6. Has seperate folder for simple Brainf*ck functions.
 7.
 8.
 9.
